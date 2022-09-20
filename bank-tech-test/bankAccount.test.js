@@ -1,7 +1,7 @@
 const BankAccount = require("./bankAccount");
 
 describe("BankAccount", () => {
-  it("returns a deposit with date, credit, debit and balance", () => {
+  it("returns a deposit with date (DD/MM/YYYY), credit, debit and balance", () => {
     const bankAccount = new BankAccount();
     bankAccount.deposit(500.25, "20/09/2022");
 
@@ -15,9 +15,37 @@ describe("BankAccount", () => {
     ]);
   });
 
-  it("returns a withdrawal with date, credit, debit and balance", () => {
+  it("returns a deposit with date (DD-MM-YYYY), credit, debit and balance", () => {
+    const bankAccount = new BankAccount();
+    bankAccount.deposit(500.25, "20-09-2022");
+
+    expect(bankAccount.getTransactions()).toEqual([
+      {
+        date: "20/09/2022",
+        credit: 500.25,
+        debit: null,
+        balance: 500.25,
+      },
+    ]);
+  });
+
+  it("returns a withdrawal with date (DD/MM/YYYY), credit, debit and balance", () => {
     const bankAccount = new BankAccount();
     bankAccount.withdrawal(500, "20/09/2022");
+
+    expect(bankAccount.getTransactions()).toEqual([
+      {
+        date: "20/09/2022",
+        credit: null,
+        debit: 500,
+        balance: -500,
+      },
+    ]);
+  });
+
+  it("returns a withdrawal with date (DD-MM-YYYY), credit, debit and balance", () => {
+    const bankAccount = new BankAccount();
+    bankAccount.withdrawal(500, "20-09-2022");
 
     expect(bankAccount.getTransactions()).toEqual([
       {

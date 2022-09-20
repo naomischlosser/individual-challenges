@@ -13,7 +13,7 @@ class BankAccount {
     this.balance += credit;
 
     let depositData = {
-      date: date,
+      date: date.replace(/-/g, "/"),
       credit: credit,
       debit: null,
       balance: this.balance,
@@ -26,7 +26,7 @@ class BankAccount {
     this.balance -= debit;
 
     let withdrawalData = {
-      date: date,
+      date: date.replace(/-/g, "/"),
       credit: null,
       debit: debit,
       balance: this.balance,
@@ -38,8 +38,8 @@ class BankAccount {
   printStatement() {
     const header = Object.keys(this.getTransactions()[0]).join(" || ");
     const body = this.getTransactions().map(this.toFormattedString);
-
     const accountStatement = header + "\n" + body.reverse().join("\n");
+
     return accountStatement;
   }
 
