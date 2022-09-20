@@ -39,14 +39,15 @@ class BankAccount {
     const body = this.transactions.map(this.toFormattedString);
     
     const accountStatement = header + '\n' + body.reverse().join('\n');
+    console.log(accountStatement)
     return accountStatement;
   };
 
-  toFormattedString(transaction) {    
-    if (Number.isInteger(transaction.credit)) transaction.credit = transaction.credit.toFixed(2);
-    if (Number.isInteger(transaction.debit)) transaction.debit = transaction.debit.toFixed(2);
-
-    transaction.balance = transaction.balance.toFixed(2);
+  toFormattedString(transaction) {
+    console.log(transaction)   
+    if (typeof transaction.credit === 'number') transaction.credit = transaction.credit.toFixed(2);
+    if (typeof transaction.debit === 'number') transaction.debit = transaction.debit.toFixed(2);
+    if (typeof transaction.balance === 'number') transaction.balance = transaction.balance.toFixed(2);
 
     return Object.values(transaction).join(" || ")
   }

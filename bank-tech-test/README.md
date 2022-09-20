@@ -28,9 +28,9 @@ npm install -g jest
 ```
 
 ## Assumptions
+* The credit/debit only takes two decimals
 * The date only takes strings in a DD/MM/YYYY or DD-MM-YYYY format
 * The function printStatement() prints the transactions as entered in reverse
-* The function printStatement() can only run once in the same node session
 
 ## Classes and functions
 ```javascript

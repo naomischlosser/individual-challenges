@@ -81,4 +81,41 @@ describe('BankAccount', () => {
       '10/01/2023 || 1000.00 ||  || 1000.00'
     );
   });
+
+  it('prints the account statement each time (4x) after making a deposit (2x) and withdrawal (2x)', () => {
+    const bankAccount = new BankAccount();
+    bankAccount.deposit(1000, '16/09/2022');
+    
+    expect(bankAccount.printStatement()).toEqual(
+      'date || credit || debit || balance' + '\n' +
+      '16/09/2022 || 1000.00 ||  || 1000.00'
+    );
+
+    bankAccount.withdrawal(400, '20/10/2022');
+
+    expect(bankAccount.printStatement()).toEqual(
+      'date || credit || debit || balance' + '\n' +
+      '20/10/2022 ||  || 400.00 || 600.00' + '\n' +
+      '16/09/2022 || 1000.00 ||  || 1000.00'
+    );
+
+    bankAccount.deposit(500, '23/10/2022');
+    
+    expect(bankAccount.printStatement()).toEqual(
+      'date || credit || debit || balance' + '\n' +
+      '23/10/2022 || 500.00 ||  || 1100.00' + '\n' +
+      '20/10/2022 ||  || 400.00 || 600.00' + '\n' +
+      '16/09/2022 || 1000.00 ||  || 1000.00'
+    );
+
+    bankAccount.withdrawal(200.50, '28/11/2022');
+
+    expect(bankAccount.printStatement()).toEqual(
+      'date || credit || debit || balance' + '\n' +
+      '28/11/2022 ||  || 200.50 || 899.50' + '\n' +
+      '23/10/2022 || 500.00 ||  || 1100.00' + '\n' +
+      '20/10/2022 ||  || 400.00 || 600.00' + '\n' +
+      '16/09/2022 || 1000.00 ||  || 1000.00'
+    );
+  });
 });
