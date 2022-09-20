@@ -45,4 +45,14 @@ describe('Bank', () => {
       },
     ]);
   });
+
+  it('prints the account statement after making a deposit', () => {
+    const bank = new Bank();
+    bank.deposit(500, '20/09/2022')
+
+    expect(bank.printAccountStatement()).toEqual(
+      'date || credit || debit || balance' + '\n' +
+      '20/09/2022 || 500.00 ||  || 500.00'
+    );
+  });
 });

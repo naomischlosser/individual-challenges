@@ -33,6 +33,31 @@ class Bank {
 
     this.transfers.push(withdrawalData)
   };
+
+  printAccountStatement() {
+    const header = 'date || credit || debit || balance' + '\n';
+    const body = this.transfers.map(this.toFormattedString);
+
+    // console.log(this.transfers);
+
+    const accountStatement = header + body;
+    // console.log(accountStatement);
+    return accountStatement;
+  };
+
+  toFormattedString(transfer) {
+      let date = transfer.date;
+      let credit = transfer.credit.toFixed(2);
+      let debit = transfer.debit.toFixed(2);
+      let balance = transfer.balance.toFixed(2);
+
+      if (credit === '0.00') {
+        credit = '';
+      } else if (debit === '0.00') {
+        debit = '';
+      }
+      return `${date} || ${credit} || ${debit} || ${balance}`;
+  }
 }
 
 module.exports = Bank;
