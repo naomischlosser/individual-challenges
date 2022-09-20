@@ -63,3 +63,22 @@ class Bank {
   }
 }
 ```
+## Example in node
+```
+$ node
+Welcome to Node.js v18.7.0.
+Type ".help" for more information.
+> const BankAccount = require('./bankAccount.js');
+undefined
+> const bankAccount = new BankAccount();
+undefined
+> bankAccount.deposit(500, '23/08/2022');
+undefined
+> bankAccount.withdrawal(200, '25/08/2022');
+undefined
+> console.log(bankAccount.printStatement());
+date || credit || debit || balance
+25/08/2022 ||  || 200.00 || 300.00
+23/08/2022 || 500.00 ||  || 500.00
+undefined
+```
