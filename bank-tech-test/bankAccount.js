@@ -42,13 +42,13 @@ class BankAccount {
     return accountStatement;
   };
 
-  toFormattedString(transfer) {    
-    if (Number.isInteger(transfer.credit)) transfer.credit = transfer.credit.toFixed(2);
-    if (Number.isInteger(transfer.debit)) transfer.debit = transfer.debit.toFixed(2);
+  toFormattedString(transaction) {    
+    if (Number.isInteger(transaction.credit)) transaction.credit = transaction.credit.toFixed(2);
+    if (Number.isInteger(transaction.debit)) transaction.debit = transaction.debit.toFixed(2);
 
-    transfer.balance = transfer.balance.toFixed(2);
+    transaction.balance = transaction.balance.toFixed(2);
 
-    return Object.values(transfer).join(" || ")
+    return Object.values(transaction).join(" || ")
   }
 }
 
