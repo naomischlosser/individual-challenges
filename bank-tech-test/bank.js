@@ -14,6 +14,16 @@ class Bank {
 
     return this.transferData;
   };
+
+  withdrawal(debit, date) {
+    this.balance -= debit;
+    this.transferData.date = date;
+    this.transferData.credit = 0;
+    this.transferData.debit = debit;
+    this.transferData.balance = this.balance;
+
+    return this.transferData;
+  };
 }
 
 module.exports = Bank;
