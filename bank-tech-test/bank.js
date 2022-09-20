@@ -1,28 +1,37 @@
 class Bank {
   constructor() {
     this.balance = 0;
-    this.transferData = {};
-    this.allTransferData = [];
+    this.transfers = [];
   };
 
   deposit(credit, date) {
     this.balance += credit;
-    this.transferData.date = date;
-    this.transferData.credit = credit;
-    this.transferData.debit = 0;
-    this.transferData.balance = this.balance;
 
-    return this.transferData;
+    let depositData = {
+      date: date,
+      credit: credit,
+      debit: 0,
+      balance: this.balance,
+    };
+
+    this.transfers.push(depositData)
+
+    return this.transfers;
   };
 
   withdrawal(debit, date) {
     this.balance -= debit;
-    this.transferData.date = date;
-    this.transferData.credit = 0;
-    this.transferData.debit = debit;
-    this.transferData.balance = this.balance;
 
-    return this.transferData;
+    let withdrawalData = {
+      date: date,
+      credit: 0,
+      debit: debit,
+      balance: this.balance,
+    };
+
+    this.transfers.push(withdrawalData)
+
+    return this.transfers;
   };
 }
 
