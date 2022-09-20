@@ -17,11 +17,11 @@ Date = '14/01/2023'
 ## Classes and functions
 ```javascript
 class Bank {
-  deposit(value, date) {
+  deposit(credit, date) {
     // makes a deposit
   }
 
-  withdrawal(value, date) {
+  withdrawal(debit, date) {
     // makes a withdrawal
   }
 
