@@ -12,7 +12,25 @@ Date = '14/01/2023'
 3. Type in `const bankAccount = new BankAccount();`
 4. To deposit money, run `bankAccount.deposit(credit, date);`
 5. To withdrawel money, run `bankAccount.withdrawal(debit, date);`
-6. To print the account statement, run `console.log(bankAccount.printStatement());`
+6. To print the account statement when finished, run `console.log(bankAccount.printStatement());`
+
+## Dependencies
+Run the following commands before using bankAccount.js:
+```
+nvm use node
+```
+
+Run the following commans before running tests:
+```
+npm init -y
+npm add jest
+npm install -g jest
+```
+
+## Assumptions
+* The date only takes strings in a DD/MM/YYYY or DD-MM-YYYY format
+* The function printStatement() prints the transactions as entered in reverse
+* The function printStatement() can only run once in the same node session
 
 ## Classes and functions
 ```javascript
@@ -37,17 +55,4 @@ class Bank {
     // formats a transaction
   }
 }
-```
-
-## Dependencies
-Run the following commands before using this program:
-```
-nvm use node
-```
-
-Run the following commans before running tests:
-```
-npm init -y
-npm add jest
-npm install -g jest
 ```
