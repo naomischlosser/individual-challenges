@@ -14,7 +14,7 @@ class Bank {
     let depositData = {
       date: date,
       credit: credit,
-      debit: 0,
+      debit: null,
       balance: this.balance,
     };
 
@@ -26,7 +26,7 @@ class Bank {
 
     let withdrawalData = {
       date: date,
-      credit: 0,
+      credit: null,
       debit: debit,
       balance: this.balance,
     };
@@ -35,28 +35,23 @@ class Bank {
   };
 
   printAccountStatement() {
-    const header = 'date || credit || debit || balance' + '\n';
+    const header = Object.keys(this.transfers[0]).join(" || ") + '\n';
     const body = this.transfers.map(this.toFormattedString);
-
-    // console.log(this.transfers);
-
     const accountStatement = header + body;
-    // console.log(accountStatement);
+
     return accountStatement;
   };
 
   toFormattedString(transfer) {
-      let date = transfer.date;
-      let credit = transfer.credit.toFixed(2);
-      let debit = transfer.debit.toFixed(2);
-      let balance = transfer.balance.toFixed(2);
+    if (!isNaN(transfer.credit)) {
+      transfer.credit = transfer.credit.toFixed(2);
+    } else if (!isNaN(transfer.debit)) {
+      transfer.credit = transfer.debit.toFixed(2);
+    }
 
-      if (credit === '0.00') {
-        credit = '';
-      } else if (debit === '0.00') {
-        debit = '';
-      }
-      return `${date} || ${credit} || ${debit} || ${balance}`;
+    transfer.balance = transfer.balance.toFixed(2);
+
+    return Object.values(transfer).join(" || ")
   }
 }
 

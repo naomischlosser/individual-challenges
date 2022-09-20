@@ -8,7 +8,7 @@ describe('Bank', () => {
     expect(bank.getTransfers()).toEqual([{
       date: '20/09/2022',
       credit: 500.25,
-      debit: 0,
+      debit: null,
       balance: 500.25,
     }]);
   });
@@ -19,7 +19,7 @@ describe('Bank', () => {
 
     expect(bank.getTransfers()).toEqual([{
       date: '20/09/2022',
-      credit: 0,
+      credit: null,
       debit: 500,
       balance: -500,
     }]);
@@ -34,12 +34,12 @@ describe('Bank', () => {
       {
         date: '16/09/2022',
         credit: 1000,
-        debit: 0,
+        debit: null,
         balance: 1000,
       },
       {
         date: '20/10/2022',
-        credit: 0,
+        credit: null,
         debit: 500,
         balance: 500,
       },
