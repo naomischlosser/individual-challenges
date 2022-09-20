@@ -18,9 +18,10 @@ Date = '14/01/2023'
 Run the following commands before using bankAccount.js:
 ```
 nvm use node
+node
 ```
 
-Run the following commans before running tests:
+Run the following commans before running tests using `jest`:
 ```
 npm init -y
 npm add jest
