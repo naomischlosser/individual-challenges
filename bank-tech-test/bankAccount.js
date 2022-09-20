@@ -1,11 +1,11 @@
-class Bank {
+class BankAccount {
   constructor() {
     this.balance = 0;
-    this.transfers = [];
+    this.transactions = [];
   };
 
-  getTransfers() {
-    return this.transfers;
+  getTransactions() {
+    return this.transactions;
   }
 
   deposit(credit, date) {
@@ -18,7 +18,7 @@ class Bank {
       balance: this.balance,
     };
 
-    this.transfers.push(depositData)
+    this.transactions.push(depositData)
   };
 
   withdrawal(debit, date) {
@@ -31,16 +31,14 @@ class Bank {
       balance: this.balance,
     };
 
-    this.transfers.push(withdrawalData)
+    this.transactions.push(withdrawalData)
   };
 
-  printAccountStatement() {
-    const header = Object.keys(this.transfers[0]).join(" || ");
-    const body = this.transfers.map(this.toFormattedString);
+  printStatement() {
+    const header = Object.keys(this.transactions[0]).join(" || ");
+    const body = this.transactions.map(this.toFormattedString);
     
     const accountStatement = header + '\n' + body.reverse().join('\n');
-
-    console.log(accountStatement)
     return accountStatement;
   };
 
@@ -54,4 +52,4 @@ class Bank {
   }
 }
 
-module.exports = Bank;
+module.exports = BankAccount;

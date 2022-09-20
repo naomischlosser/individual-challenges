@@ -1,11 +1,11 @@
-const Bank = require('./bank');
+const BankAccount = require('./bankAccount');
 
-describe('Bank', () => {
+describe('BankAccount', () => {
   it('returns a deposit with date, credit, debit and balance', () => {
-    const bank = new Bank();
-    bank.deposit(500.25, '20/09/2022')
+    const bankAccount = new BankAccount();
+    bankAccount.deposit(500.25, '20/09/2022')
 
-    expect(bank.getTransfers()).toEqual([{
+    expect(bankAccount.getTransactions()).toEqual([{
       date: '20/09/2022',
       credit: 500.25,
       debit: null,
@@ -14,10 +14,10 @@ describe('Bank', () => {
   });
 
   it('returns a withdrawal with date, credit, debit and balance', () => {
-    const bank = new Bank();
-    bank.withdrawal(500, '20/09/2022')
+    const bankAccount = new BankAccount();
+    bankAccount.withdrawal(500, '20/09/2022')
 
-    expect(bank.getTransfers()).toEqual([{
+    expect(bankAccount.getTransactions()).toEqual([{
       date: '20/09/2022',
       credit: null,
       debit: 500,
@@ -26,11 +26,11 @@ describe('Bank', () => {
   });
 
   it('returns a deposit and withdrawal with date, credit, debit and balance', () => {
-    const bank = new Bank();
-    bank.deposit(1000, '16/09/2022')
-    bank.withdrawal(500, '20/10/2022')
+    const bankAccount = new BankAccount();
+    bankAccount.deposit(1000, '16/09/2022')
+    bankAccount.withdrawal(500, '20/10/2022')
 
-    expect(bank.getTransfers()).toEqual([
+    expect(bankAccount.getTransactions()).toEqual([
       {
         date: '16/09/2022',
         credit: 1000,
@@ -47,21 +47,21 @@ describe('Bank', () => {
   });
 
   it('prints the account statement after making a deposit', () => {
-    const bank = new Bank();
-    bank.deposit(500, '20/09/2022')
+    const bankAccount = new BankAccount();
+    bankAccount.deposit(500, '20/09/2022')
 
-    expect(bank.printAccountStatement()).toEqual(
+    expect(bankAccount.printStatement()).toEqual(
       'date || credit || debit || balance' + '\n' +
       '20/09/2022 || 500.00 ||  || 500.00'
     );
   });
 
   it('prints the account statement after making a deposit and withdrawal', () => {
-    const bank = new Bank();
-    bank.deposit(1000, '16/09/2022')
-    bank.withdrawal(400, '20/10/2022')
+    const bankAccount = new BankAccount();
+    bankAccount.deposit(1000, '16/09/2022')
+    bankAccount.withdrawal(400, '20/10/2022')
 
-    expect(bank.printAccountStatement()).toEqual(
+    expect(bankAccount.printStatement()).toEqual(
       'date || credit || debit || balance' + '\n' +
       '20/10/2022 ||  || 400.00 || 600.00' + '\n' +
       '16/09/2022 || 1000.00 ||  || 1000.00'
@@ -69,12 +69,12 @@ describe('Bank', () => {
   });
 
   it('prints the account statement after making a deposit (2x) and withdrawal', () => {
-    const bank = new Bank();
-    bank.deposit(1000, '10/01/2023')
-    bank.deposit(2000, '13/01/2023')
-    bank.withdrawal(500, '14/01/2023')
+    const bankAccount = new BankAccount();
+    bankAccount.deposit(1000, '10/01/2023')
+    bankAccount.deposit(2000, '13/01/2023')
+    bankAccount.withdrawal(500, '14/01/2023')
 
-    expect(bank.printAccountStatement()).toEqual(
+    expect(bankAccount.printStatement()).toEqual(
       'date || credit || debit || balance' + '\n' +
       '14/01/2023 ||  || 500.00 || 2500.00' + '\n' +
       '13/01/2023 || 2000.00 ||  || 3000.00' + '\n' +
