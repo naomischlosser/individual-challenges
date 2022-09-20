@@ -4,6 +4,10 @@ class Bank {
     this.transfers = [];
   };
 
+  getTransfers() {
+    return this.transfers;
+  }
+
   deposit(credit, date) {
     this.balance += credit;
 
@@ -15,8 +19,6 @@ class Bank {
     };
 
     this.transfers.push(depositData)
-
-    return this.transfers;
   };
 
   withdrawal(debit, date) {
@@ -30,8 +32,6 @@ class Bank {
     };
 
     this.transfers.push(withdrawalData)
-
-    return this.transfers;
   };
 }
 
