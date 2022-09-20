@@ -1,11 +1,12 @@
 # How to use bankAccount.js
+
 This program is written in Javascript.
 
 Examples of input needed at step 4 and 5 below: <br />
 Credit/debit = 500.00 <br />
 Date = '14/01/2023'
 
-*Note that the date needs to be within quotation marks*
+_Note that the date needs to be within quotation marks_
 
 1. Open node in the terminal
 2. Type in `const BankAccount = require('./bankAccount.js');`
@@ -14,30 +15,35 @@ Date = '14/01/2023'
 5. To withdrawel money, run `bankAccount.withdrawal(debit, date);`
 6. To print the account statement when finished, run `console.log(bankAccount.printStatement());`
 
+## Assumptions
+
+- Credit/debit can take an integer or a float
+- Credit/debit only prints two decimals
+- The date only takes strings in a DD/MM/YYYY or DD-MM-YYYY format
+- The function printStatement() prints the transactions as entered in reverse
+
 ## Dependencies
-Run the following commands before using bankAccount.js:
+
+Run the following commands before running bankAccount.js using `node`:
+
 ```
 nvm use node
-node
 ```
 
 Run the following commans before running tests using `jest`:
+
 ```
 npm init -y
 npm add jest
 npm install -g jest
 ```
 
-## Assumptions
-* The credit/debit only takes two decimals
-* The date only takes strings in a DD/MM/YYYY or DD-MM-YYYY format
-* The function printStatement() prints the transactions as entered in reverse
-
 ## Classes and functions
+
 ```javascript
 class Bank {
   getTransactions() {
-    //returns all transactions;
+    // returns all transactions;
   }
 
   deposit(credit, date) {
