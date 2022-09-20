@@ -3,13 +3,13 @@ const Bank = require('./bank');
 describe('Bank', () => {
   it('returns a deposit with date, credit, debit and balance', () => {
     const bank = new Bank();
-    bank.deposit(500, '20/09/2022')
+    bank.deposit(500.25, '20/09/2022')
 
     expect(bank.getTransfers()).toEqual([{
       date: '20/09/2022',
-      credit: 500.00,
+      credit: 500.25,
       debit: 0,
-      balance: 500.00,
+      balance: 500.25,
     }]);
   });
 
@@ -20,8 +20,8 @@ describe('Bank', () => {
     expect(bank.getTransfers()).toEqual([{
       date: '20/09/2022',
       credit: 0,
-      debit: 500.00,
-      balance: -500.00,
+      debit: 500,
+      balance: -500,
     }]);
   });
 
@@ -33,15 +33,15 @@ describe('Bank', () => {
     expect(bank.getTransfers()).toEqual([
       {
         date: '16/09/2022',
-        credit: 1000.00,
+        credit: 1000,
         debit: 0,
-        balance: 1000.00,
+        balance: 1000,
       },
       {
         date: '20/10/2022',
         credit: 0,
-        debit: 500.00,
-        balance: 500.00,
+        debit: 500,
+        balance: 500,
       },
     ]);
   });
