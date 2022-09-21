@@ -28,3 +28,12 @@ class BankAccount {
 }
 
 module.exports = BankAccount;
+
+
+// this.formatDate(this.date.toString())
+
+// formatDate(date) {
+//   return  ('0' + date.getDate()).slice(-2) + '/' +
+//           ('0' + date.getMonth() + 1).slice(-2) + '/' +
+//           date.getFullYear();
+// }

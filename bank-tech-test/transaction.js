@@ -11,7 +11,7 @@ class Transaction {
     this.balance += credit;
 
     let depositData = {
-      date: this.formatDate(new Date()),
+      date: new Date(),
       credit: credit * 100,
       debit: null,
       balance: this.balance * 100,
@@ -28,19 +28,13 @@ class Transaction {
     this.balance -= debit;
 
     let withdrawalData = {
-      date: this.formatDate(new Date()),
+      date: new Date(),
       credit: null,
       debit: debit * 100,
       balance: this.balance * 100,
     };
 
     return withdrawalData;
-  }
-
-  formatDate(date) {
-    return  ('0' + date.getDate()).slice(-2) + '/' +
-            ('0' + date.getMonth() + 1).slice(-2) + '/' +
-            date.getFullYear();
   }
 }
 
