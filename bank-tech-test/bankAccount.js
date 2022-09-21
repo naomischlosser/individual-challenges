@@ -10,8 +10,8 @@ class BankAccount {
   }
 
   deposit(credit, date) {
-    if (typeof date !== 'string') {
-      throw 'Date is not a string!';
+    if (typeof date !== "string") {
+      throw "Date is not a string!";
     }
 
     this.balance += credit;
@@ -21,14 +21,14 @@ class BankAccount {
       credit: credit,
       debit: null,
       balance: this.balance,
-    };    
+    };
 
     this.transactions.push(depositData);
   }
 
   withdrawal(debit, date) {
-    if (typeof date !== 'string') {
-      throw 'Date is not a string!';
+    if (typeof date !== "string") {
+      throw "Date is not a string!";
     }
 
     this.balance -= debit;
@@ -44,7 +44,7 @@ class BankAccount {
   }
 
   printStatement() {
-    const header = 'date || credit || debit || balance' + '\n';
+    const header = "date || credit || debit || balance" + "\n";
     const body = this.getTransactions().map(this.toFormattedString);
     const accountStatement = header + body.reverse().join("\n");
 

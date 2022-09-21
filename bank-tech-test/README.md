@@ -63,7 +63,9 @@ class Bank {
   }
 }
 ```
+
 ## Example in node
+
 ```
 $ node
 Welcome to Node.js v18.7.0.

@@ -171,16 +171,19 @@ describe("BankAccount", () => {
   it("returns an error when date is not entered as a string", () => {
     const bankAccount = new BankAccount();
 
-    expect(() => bankAccount.deposit(500.25, 20-10-2022)).toThrow('Date is not a string!');
-    expect(() => bankAccount.withdrawal(500.25, 20/10/2022)).toThrow('Date is not a string!');
+    expect(() => bankAccount.deposit(500.25, 20 - 10 - 2022)).toThrow(
+      "Date is not a string!"
+    );
+    expect(() => bankAccount.withdrawal(500.25, 20 / 10 / 2022)).toThrow(
+      "Date is not a string!"
+    );
   });
 
   it("prints the account statement without any transactions", () => {
     const bankAccount = new BankAccount();
 
     expect(bankAccount.printStatement()).toEqual(
-      "date || credit || debit || balance" +
-        "\n"
+      "date || credit || debit || balance" + "\n"
     );
   });
 });
