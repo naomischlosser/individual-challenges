@@ -36,17 +36,32 @@ describe("Account", () => {
     );
   });
 
-  xit("prints the account statement after making a deposit and withdrawal", () => {
-    const bankAccount = new BankAccount();
-    bankAccount.deposit(1000, "16/09/2022");
-    bankAccount.withdrawal(400, "20/10/2022");
+  it("prints the account statement after making a deposit and withdrawal", () => {
+    const account = new Account();
 
-    expect(bankAccount.printStatement()).toEqual(
+    depositDouble = {
+      date: new Date(date),
+      credit: 100000,
+      debit: null,
+      balance: 100000,
+    };
+
+    withdrawalDouble = {
+      date: new Date(date),
+      credit: null,
+      debit: 40000,
+      balance: 60000,
+    };
+
+    account.addTransaction(depositDouble);
+    account.addTransaction(withdrawalDouble);
+
+    expect(account.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
-        "20/10/2022 ||  || 400.00 || 600.00" +
+        "01/01/2022 ||  || £400.00 || £600.00" +
         "\n" +
-        "16/09/2022 || 1000.00 ||  || 1000.00"
+        "01/01/2022 || £1,000.00 ||  || £1,000.00"
     );
   });
 
