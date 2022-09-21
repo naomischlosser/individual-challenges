@@ -166,4 +166,12 @@ describe("BankAccount", () => {
         "16/09/2022 || 1000.00 ||  || 1000.00"
     );
   });
+
+  // Can't test e.g. 01 due to it being an octal number (although it does work in node)
+  it("returns an error when date is not entered as a string", () => {
+    const bankAccount = new BankAccount();
+
+    expect(() => bankAccount.deposit(500.25, 20-10-2022)).toThrow('Date is not a string!');
+    expect(() => bankAccount.withdrawal(500.25, 20/10/2022)).toThrow('Date is not a string!');
+  });
 });

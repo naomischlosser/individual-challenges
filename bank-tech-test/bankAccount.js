@@ -4,12 +4,16 @@ class BankAccount {
     this.transactions = [];
   }
 
-  // Seperate function for testing purposes
+  // Seperate function mainly for testing purposes
   getTransactions() {
     return this.transactions;
   }
 
   deposit(credit, date) {
+    if (typeof date !== 'string') {
+      throw 'Date is not a string!';
+    }
+
     this.balance += credit;
 
     let depositData = {
@@ -23,6 +27,10 @@ class BankAccount {
   }
 
   withdrawal(debit, date) {
+    if (typeof date !== 'string') {
+      throw 'Date is not a string!';
+    }
+
     this.balance -= debit;
 
     let withdrawalData = {
