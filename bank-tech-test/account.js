@@ -1,4 +1,4 @@
-class BankAccount {
+class Account {
   constructor() {
     this.transactions = [];
   }
@@ -27,7 +27,7 @@ class BankAccount {
   }
 }
 
-module.exports = BankAccount;
+module.exports = Account;
 
 
 // this.formatDate(this.date.toString())

@@ -1,6 +1,6 @@
-const BankAccount = require("./bankAccount");
+const account = require("./account");
 
-describe("BankAccount", () => {
+describe("Account", () => {
   it("prints the account statement without any transactions", () => {
     const transaction = new Transaction();
 
@@ -8,7 +8,7 @@ describe("BankAccount", () => {
       "date || credit || debit || balance" + "\n"
     );
   });
-  
+
   it("prints the account statement after making a deposit", () => {
     const bankAccount = new BankAccount();
     bankAccount.deposit(500, "20/09/2022");
