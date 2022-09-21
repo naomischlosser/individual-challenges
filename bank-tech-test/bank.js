@@ -15,7 +15,7 @@ class Bank {
     this.account.addTransaction(this.transaction.withdrawal(debit));
   }
 
-  accountStatement(){
+  accountStatement() {
     return this.account.printStatement();
   }
 }

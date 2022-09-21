@@ -56,10 +56,11 @@ undefined
 ```
 
 ## Code structure
+
 The code structure of bank.js, account.js and transaction.js is as shown below. The transaction class uses the functions `deposit(credit)` and `withdrawal(debit)` to store the date, credit, debit and balance in an object. In the account class, the function `addTransaction(transaction)` adds each transaction to an array. The function `printStatement()` maps over these transactions to print the header and body in the desired format, using the function `toFormattedString(transaction)`. The functions `formatDate(date)` and `formatCurrency(value)` are both called within the `toFormattedString(transaction)` to ensure DRY code. Both the transaction and account class come together in the bank class to ensure the user only has to load one file into node and can only access the required functions (deposit, withdrawal and account statement).
 
-
 ### bank.js
+
 ```javascript
 class Bank {
   accountDeposit(credit) {
@@ -70,7 +71,7 @@ class Bank {
     // adds a withdrawal
   }
 
-  accountStatement(){
+  accountStatement() {
     // returns the account statement
   }
 }

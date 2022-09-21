@@ -1,19 +1,17 @@
 const Bank = require("./bank");
 
 beforeEach(() => {
-  date = '2022-01-01'
-  dateFormatted = '01/01/2022'
+  date = "2022-01-01";
+  dateFormatted = "01/01/2022";
 
-  jest
-    .useFakeTimers()
-    .setSystemTime(new Date(date));
+  jest.useFakeTimers().setSystemTime(new Date(date));
 });
 
 describe("integration", () => {
   it("prints the account statement after making a deposit", () => {
     const bank = new Bank();
-    bank.accountDeposit(500.50);
-    
+    bank.accountDeposit(500.5);
+
     expect(bank.accountStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +

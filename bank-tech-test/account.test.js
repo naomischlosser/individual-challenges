@@ -1,12 +1,10 @@
 const Account = require("./account");
 
 beforeEach(() => {
-  date = '2022-01-01'
-  dateFormatted = '01/01/2022'
+  date = "2022-01-01";
+  dateFormatted = "01/01/2022";
 
-  jest
-    .useFakeTimers()
-    .setSystemTime(new Date(date));
+  jest.useFakeTimers().setSystemTime(new Date(date));
 });
 
 describe("Account", () => {
