@@ -38,10 +38,37 @@ npm add jest
 npm install -g jest
 ```
 
-## Classes and functions
+## Example in node
+
+```
+$ node
+Welcome to Node.js v18.7.0.
+Type ".help" for more information.
+> const BankAccount = require('./bankAccount.js');
+undefined
+> const bankAccount = new BankAccount();
+undefined
+> bankAccount.deposit(500, '23/08/2022');
+undefined
+> bankAccount.withdrawal(200, '25/08/2022');
+undefined
+> console.log(bankAccount.printStatement());
+date || credit || debit || balance
+25/08/2022 ||  || 200.00 || 300.00
+23/08/2022 || 500.00 ||  || 500.00
+undefined
+```
+
+## Code structure
+The structure of bankAccount.js is as shown below. All functions related to someone's bankaccount (e.g. deposit, withdrawal and print a statement) is within the class BankAccount. Deposit and withdrawal take two arguments; credit or debit and date. Credit/debit needs to be given as a number, whereas the date needs to be given as a string to not confuse the program and run 20/08/2022 as a mathematical function or take 08 as an octal number. Each deposit and withdrawal function also takes care of the balance. After updating all the fields the deposit or withdrawal is pushed into an array of transactions and can be retreived from getTransactions(). This function is not strictly necessary as it's all within one class and all transactions can be retrieved with this.transactions. However it clearly defines the scope of each function and makes the tests easier to read. The printStatement function print the header and body (all transactions) of the account statement, whereas toFormattedString() changes every transaction to the desired format.
 
 ```javascript
-class Bank {
+class BankAccount {
+  constructor() {
+    this.balance = 0;
+    this.transactions = [];
+  }
+
   getTransactions() {
     // returns all transactions;
   }
@@ -62,25 +89,4 @@ class Bank {
     // formats a transaction
   }
 }
-```
-
-## Example in node
-
-```
-$ node
-Welcome to Node.js v18.7.0.
-Type ".help" for more information.
-> const BankAccount = require('./bankAccount.js');
-undefined
-> const bankAccount = new BankAccount();
-undefined
-> bankAccount.deposit(500, '23/08/2022');
-undefined
-> bankAccount.withdrawal(200, '25/08/2022');
-undefined
-> console.log(bankAccount.printStatement());
-date || credit || debit || balance
-25/08/2022 ||  || 200.00 || 300.00
-23/08/2022 || 500.00 ||  || 500.00
-undefined
 ```
