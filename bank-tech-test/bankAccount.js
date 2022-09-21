@@ -21,7 +21,7 @@ class BankAccount {
       credit: credit,
       debit: null,
       balance: this.balance,
-    };
+    };    
 
     this.transactions.push(depositData);
   }
@@ -44,9 +44,9 @@ class BankAccount {
   }
 
   printStatement() {
-    const header = Object.keys(this.getTransactions()[0]).join(" || ");
+    const header = 'date || credit || debit || balance' + '\n';
     const body = this.getTransactions().map(this.toFormattedString);
-    const accountStatement = header + "\n" + body.reverse().join("\n");
+    const accountStatement = header + body.reverse().join("\n");
 
     return accountStatement;
   }
