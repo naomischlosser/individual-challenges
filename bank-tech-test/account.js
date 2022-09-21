@@ -4,36 +4,40 @@ class Account {
   }
 
   addTransaction(transaction) {
-    this.transactions(transaction);
+    this.transactions.push(transaction);
   }
 
   printStatement() {
     const header = "date || credit || debit || balance" + "\n";
-    const body = this.getTransactions().map(this.toFormattedString);
+    const body = this.transactions.map(this.toFormattedString, this);
     const accountStatement = header + body.reverse().join("\n");
 
     return accountStatement;
   }
 
+  // Skips transactions that are already formatted
   toFormattedString(transaction) {
+    if (Object.prototype.toString.call(transaction.date) === '[object Date]')
+      transaction.date =  this.formatDate(transaction.date);
     if (typeof transaction.credit === "number")
-      transaction.credit = transaction.credit.toFixed(2);
+      transaction.credit = this.formatCurrency(transaction.credit);
     if (typeof transaction.debit === "number")
-      transaction.debit = transaction.debit.toFixed(2);
+      transaction.debit = this.formatCurrency(transaction.debit);
     if (typeof transaction.balance === "number")
-      transaction.balance = transaction.balance.toFixed(2);
+      transaction.balance = this.formatCurrency(transaction.balance);
 
     return Object.values(transaction).join(" || ");
+  }
+
+  formatDate(date) {
+    return  ('0' + date.getDate()).slice(-2) + '/' +
+            ('0' + date.getMonth() + 1).slice(-2) + '/' +
+            date.getFullYear();
+  }
+
+  formatCurrency(value) {
+    return (value/100).toLocaleString("en-UK", {style:"currency", currency:"GBP"});
   }
 }
 
 module.exports = Account;
-
-
-// this.formatDate(this.date.toString())
-
-// formatDate(date) {
-//   return  ('0' + date.getDate()).slice(-2) + '/' +
-//           ('0' + date.getMonth() + 1).slice(-2) + '/' +
-//           date.getFullYear();
-// }
