@@ -2,6 +2,7 @@ const Account = require("./account");
 
 beforeEach(() => {
   date = '2022-01-01'
+  dateFormatted = '01/01/2022'
 
   jest
     .useFakeTimers()
@@ -32,7 +33,7 @@ describe("Account", () => {
     expect(account.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
-        "01/01/2022 || £500.00 ||  || £500.00"
+        `${dateFormatted} || £500.00 ||  || £500.00`
     );
   });
 
@@ -59,73 +60,128 @@ describe("Account", () => {
     expect(account.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
-        "01/01/2022 ||  || £400.00 || £600.00" +
+        `${dateFormatted} ||  || £400.00 || £600.00` +
         "\n" +
-        "01/01/2022 || £1,000.00 ||  || £1,000.00"
+        `${dateFormatted} || £1,000.00 ||  || £1,000.00`
     );
   });
 
-  xit("prints the account statement after making a deposit (2x) and withdrawal", () => {
-    const bankAccount = new BankAccount();
-    bankAccount.deposit(1000, "10/01/2023");
-    bankAccount.deposit(2000, "13/01/2023");
-    bankAccount.withdrawal(500, "14/01/2023");
+  it("prints the account statement after making a deposit (2x) and withdrawal", () => {
+    const account = new Account();
 
-    expect(bankAccount.printStatement()).toEqual(
+    depositDouble1 = {
+      date: new Date(date),
+      credit: 100000,
+      debit: null,
+      balance: 100000,
+    };
+
+    depositDouble2 = {
+      date: new Date(date),
+      credit: 200000,
+      debit: null,
+      balance: 300000,
+    };
+
+    withdrawalDouble = {
+      date: new Date(date),
+      credit: null,
+      debit: 50000,
+      balance: 250000,
+    };
+
+    account.addTransaction(depositDouble1);
+    account.addTransaction(depositDouble2);
+    account.addTransaction(withdrawalDouble);
+
+    expect(account.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
-        "14/01/2023 ||  || 500.00 || 2500.00" +
+        `${dateFormatted} ||  || £500.00 || £2,500.00` +
         "\n" +
-        "13/01/2023 || 2000.00 ||  || 3000.00" +
+        `${dateFormatted} || £2,000.00 ||  || £3,000.00` +
         "\n" +
-        "10/01/2023 || 1000.00 ||  || 1000.00"
+        `${dateFormatted} || £1,000.00 ||  || £1,000.00`
     );
   });
 
-  xit("prints the account statement each time (4x) after making a deposit (2x) and withdrawal (2x)", () => {
-    const bankAccount = new BankAccount();
-    bankAccount.deposit(1000, "16/09/2022");
+  it("prints the account statement each time (4x) after making a deposit (2x) and withdrawal (2x)", () => {
+    const account = new Account();
 
-    expect(bankAccount.printStatement()).toEqual(
+    // First deposit
+    depositDouble1 = {
+      date: new Date(date),
+      credit: 100000,
+      debit: null,
+      balance: 100000,
+    };
+
+    account.addTransaction(depositDouble1);
+
+    expect(account.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
-        "16/09/2022 || 1000.00 ||  || 1000.00"
+        `${dateFormatted} || £1,000.00 ||  || £1,000.00`
     );
 
-    bankAccount.withdrawal(400, "20/10/2022");
+    // First withdrawal
+    withdrawalDouble1 = {
+      date: new Date(date),
+      credit: null,
+      debit: 40000,
+      balance: 60000,
+    };
 
-    expect(bankAccount.printStatement()).toEqual(
+    account.addTransaction(withdrawalDouble1);
+
+    expect(account.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
-        "20/10/2022 ||  || 400.00 || 600.00" +
+        `${dateFormatted} ||  || £400.00 || £600.00` +
         "\n" +
-        "16/09/2022 || 1000.00 ||  || 1000.00"
+        `${dateFormatted} || £1,000.00 ||  || £1,000.00`
     );
 
-    bankAccount.deposit(500, "23/10/2022");
+    // Second deposit
+    depositDouble2 = {
+      date: new Date(date),
+      credit: 50000,
+      debit: null,
+      balance: 110000,
+    };
 
-    expect(bankAccount.printStatement()).toEqual(
+    account.addTransaction(depositDouble2);
+
+    expect(account.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
-        "23/10/2022 || 500.00 ||  || 1100.00" +
+        `${dateFormatted} || £500.00 ||  || £1,100.00` +
         "\n" +
-        "20/10/2022 ||  || 400.00 || 600.00" +
+        `${dateFormatted} ||  || £400.00 || £600.00` +
         "\n" +
-        "16/09/2022 || 1000.00 ||  || 1000.00"
+        `${dateFormatted} || £1,000.00 ||  || £1,000.00`
     );
 
-    bankAccount.withdrawal(200.5, "28/11/2022");
+    // Second withdrawal
+    withdrawalDouble2 = {
+      date: new Date(date),
+      credit: null,
+      debit: 20050,
+      balance: 89950,
+    };
 
-    expect(bankAccount.printStatement()).toEqual(
+    account.addTransaction(withdrawalDouble2);
+
+    expect(account.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
-        "28/11/2022 ||  || 200.50 || 899.50" +
+        `${dateFormatted} ||  || £200.50 || £899.50` +
         "\n" +
-        "23/10/2022 || 500.00 ||  || 1100.00" +
+        `${dateFormatted} || £500.00 ||  || £1,100.00` +
         "\n" +
-        "20/10/2022 ||  || 400.00 || 600.00" +
+        `${dateFormatted} ||  || £400.00 || £600.00` +
         "\n" +
-        "16/09/2022 || 1000.00 ||  || 1000.00"
+        `${dateFormatted} || £1,000.00 ||  || £1,000.00`
     );
   });
 });
