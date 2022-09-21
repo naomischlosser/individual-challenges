@@ -1,46 +1,10 @@
 class BankAccount {
   constructor() {
-    this.balance = 0;
     this.transactions = [];
   }
 
-  // Seperate function mainly for testing purposes
-  getTransactions() {
-    return this.transactions;
-  }
-
-  deposit(credit, date) {
-    if (typeof date !== "string") {
-      throw "Date is not a string!";
-    }
-
-    this.balance += credit;
-
-    let depositData = {
-      date: date.replace(/-/g, "/"),
-      credit: credit,
-      debit: null,
-      balance: this.balance,
-    };
-
-    this.transactions.push(depositData);
-  }
-
-  withdrawal(debit, date) {
-    if (typeof date !== "string") {
-      throw "Date is not a string!";
-    }
-
-    this.balance -= debit;
-
-    let withdrawalData = {
-      date: date.replace(/-/g, "/"),
-      credit: null,
-      debit: debit,
-      balance: this.balance,
-    };
-
-    this.transactions.push(withdrawalData);
+  addTransaction(transaction) {
+    this.transactions(transaction);
   }
 
   printStatement() {

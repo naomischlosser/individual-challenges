@@ -1,16 +1,10 @@
 const BankAccount = require("./bankAccount");
+const Transaction = require("./transaction");
 
-describe("BankAccount", () => {
-  it("prints the account statement without any transactions", () => {
-    const transaction = new Transaction();
-
-    expect(transaction.printStatement()).toEqual(
-      "date || credit || debit || balance" + "\n"
-    );
-  });
-  
+describe("integration", () => {
   it("prints the account statement after making a deposit", () => {
     const bankAccount = new BankAccount();
+    const transaction = new Transaction();
     bankAccount.deposit(500, "20/09/2022");
 
     expect(bankAccount.printStatement()).toEqual(
