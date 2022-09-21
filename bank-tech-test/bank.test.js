@@ -21,7 +21,7 @@ describe("integration", () => {
     );
   });
 
-  it("prints the account statement after making a withdrawal", () => {
+  it("prints the account statement after making a deposit and withdrawal", () => {
     const bank = new Bank();
     bank.accountDeposit(1000);
     bank.accountWithdrawal(400);
@@ -35,9 +35,16 @@ describe("integration", () => {
     );
   });
 
-  xit("prints the account statement after making a deposit and withdrawal", () => {
+  it("prints the account statement each time (2x) after making a deposit and withdrawal", () => {
     const bank = new Bank();
     bank.accountDeposit(1000);
+
+    expect(bank.accountStatement()).toEqual(
+      "date || credit || debit || balance" +
+        "\n" +
+        `${dateFormatted} || £1,000.00 ||  || £1,000.00`
+    );
+
     bank.accountWithdrawal(400);
 
     expect(bank.accountStatement()).toEqual(
