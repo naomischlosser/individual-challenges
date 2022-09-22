@@ -69,5 +69,14 @@ describe GildedRose do
         expect(items[0].quality).to eq 50
       end
     end
+
+    context "for special item - Sulfuras, Hand of Ragnaros" do
+      it "never increases or decreases sell_in or quality" do
+        items = [Item.new("Sulfuras, Hand of Ragnaros", 10, 60)]
+        GildedRose.new(items).update_quality()
+        expect(items[0].sell_in).to eq 10
+        expect(items[0].quality).to eq 60
+      end
+    end
   end
 end

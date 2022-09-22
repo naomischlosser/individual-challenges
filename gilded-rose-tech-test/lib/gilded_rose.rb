@@ -12,7 +12,7 @@ class GildedRose
         item.quality += 1 if item.quality < 50
       when "Backstage passes to a TAFKAL80ETC concert"
         
-      when "Sulfuras, Hand of Ragnaros"
+      when "sulfuras, hand of ragnaros"
         
       else
         if (item.sell_in > 0 && item.quality > 0) || (item.sell_in <= 0 && item.quality = 1)
