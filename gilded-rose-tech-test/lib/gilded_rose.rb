@@ -9,7 +9,7 @@ class GildedRose
       case item.name.downcase
       when "aged brie"
         item.sell_in -= 1
-        item.quality += 1 if item.quality < 50
+        item.quality = [item.quality += 1, 50].min
       
       when "backstage passes to a tafkal80etc concert"
         item.sell_in -= 1
