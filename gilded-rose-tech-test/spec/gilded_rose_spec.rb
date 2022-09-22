@@ -8,6 +8,14 @@ describe GildedRose do
       GildedRose.new(items).update_quality()
       expect(items[0].name).to eq "foo"
     end
-  end
 
+    context "for any general item" do
+      it "decreases the sell_in and quality if 0 < quality < 50" do
+        items = [Item.new("foo", 10, 6)]
+        GildedRose.new(items).update_quality()
+        expect(items[0].sell_in).to eq 9
+        expect(items[0].quality).to eq 5
+      end
+    end
+  end
 end
