@@ -25,7 +25,7 @@ class GildedRose
      
       when "conjured mana cake"
         item.sell_in -= 1
-        item.quality -= 2
+        item.quality = [item.quality -= 2, 0].max
 
       when "sulfuras, hand of ragnaros"
         # never has to be sold or decrease in quality
