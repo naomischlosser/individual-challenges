@@ -13,6 +13,7 @@ class GildedRose
       when "backstage passes to a tafkal80etc concert"
         item.sell_in -= 1
         item.quality += 1
+        item.quality += 1 if item.sell_in <= 10
       when "sulfuras, hand of ragnaros"
         # never has to be sold or decrease in quality
       else
