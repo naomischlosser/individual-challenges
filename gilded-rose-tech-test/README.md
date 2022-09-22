@@ -24,7 +24,7 @@ Changes to the `UpdateQuality` method and adding any new code is allowed as long
 ### Special item list (alphabetical)
 - Aged Brie
 - Backstage passes to a TAFKAL80ETC concert
-- Conjured items
+- Conjured Mana Cake
 - Sulfuras, Hand of Ragnaros
 
 ## DevDependencies
