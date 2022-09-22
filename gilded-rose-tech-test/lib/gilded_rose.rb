@@ -8,7 +8,8 @@ class GildedRose
     @items.each do |item|
       case item.name
       when "Aged Brie"
-        
+        item.sell_in -= 1
+        item.quality += 1
       when "Backstage passes to a TAFKAL80ETC concert"
         
       when "Sulfuras, Hand of Ragnaros"
