@@ -17,11 +17,11 @@ Special items:
 
 An update is required that includes conjured items:
 
-    “Conjured” items degrade in Quality twice as fast as normal items
+- “Conjured” items degrade in Quality twice as fast as normal items
 
 Changes to the `UpdateQuality` method and adding any new code is allowed as long as everything still works correctly. However, **do not alter the Item class**.
 
-## Special item list
+### Special item list
 - Sulfuras, Hand of Ragnaros
 - Aged Brie
 - Backstage passes to a TAFKAL80ETC concert
