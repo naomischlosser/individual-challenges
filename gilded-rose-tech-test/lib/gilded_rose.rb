@@ -15,7 +15,7 @@ class GildedRose
         if item.sell_in.between?(6,10)
           item.quality = [item.quality += 2, 50].min
         elsif item.sell_in.between?(0,5)
-          item.quality += 3
+          item.quality = [item.quality += 3, 50].min
         elsif item.sell_in < 0
           item.quality = 0
         else
