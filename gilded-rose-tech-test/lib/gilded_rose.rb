@@ -14,6 +14,7 @@ class GildedRose
         item.sell_in -= 1
         item.quality += 1
         item.quality += 1 if item.sell_in <= 10
+        item.quality += 1 if item.sell_in <= 5
       when "sulfuras, hand of ragnaros"
         # never has to be sold or decrease in quality
       else
