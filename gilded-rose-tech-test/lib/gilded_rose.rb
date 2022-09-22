@@ -13,7 +13,7 @@ class GildedRose
       when "Backstage passes to a TAFKAL80ETC concert"
         
       when "sulfuras, hand of ragnaros"
-        
+        # never has to be sold or decrease in quality
       else
         if (item.sell_in > 0 && item.quality > 0) || (item.sell_in <= 0 && item.quality = 1)
           item.quality -= 1
