@@ -13,7 +13,7 @@ class GildedRose
       when "backstage passes to a tafkal80etc concert"
         item.sell_in -= 1
         if item.sell_in.between?(6,10)
-          item.quality += 2
+          item.quality = [item.quality += 2, 50].min
         elsif item.sell_in.between?(0,5)
           item.quality += 3
         elsif item.sell_in < 0
