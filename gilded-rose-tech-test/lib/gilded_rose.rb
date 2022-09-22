@@ -6,8 +6,8 @@ class GildedRose
 
   def update_quality()
     @items.each do |item|
-      case item.name
-      when "Aged Brie"
+      case item.name.downcase
+      when "aged brie"
         item.sell_in -= 1
         item.quality += 1 if item.quality < 50
       when "Backstage passes to a TAFKAL80ETC concert"
