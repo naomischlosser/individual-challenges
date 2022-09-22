@@ -20,7 +20,7 @@ Credit/debit = e.g. 500.50 or 500
 
 ## Dependencies
 
-Run the following commands before running bankAccount.js using `node`:
+Run the following commands before running bank.js using `node`:
 
 ```
 nvm use node
