@@ -5,7 +5,10 @@ class GildedRose
   end
 
   def update_quality()
+
     @items.each do |item|
+      fail "Quality is outside of the 0-50 range" if !item.quality.between?(0,50)
+
       case item.name.downcase
       when "aged brie"
         item.sell_in -= 1

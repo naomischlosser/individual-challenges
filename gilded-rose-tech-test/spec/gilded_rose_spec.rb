@@ -159,5 +159,12 @@ describe GildedRose do
         expect(items[0].quality).to eq 0
       end
     end
+
+    context "when given quality < 0 or quality > 50" do
+      it "returns an error" do
+        items = [Item.new("foo", 0, -5)]
+        expect{GildedRose.new(items).update_quality()}.to raise_error "Quality is outside of the 0-50 range"
+      end
+    end
   end
 end
