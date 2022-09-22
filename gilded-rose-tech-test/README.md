@@ -1,5 +1,5 @@
 # Project description
-_Our inn buys and sells only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us._
+_Our inn buys and sells only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us. After a good few years of using the system an update is required. Changes to the original `UpdateQuality` method and adding any new code is allowed as long as everything still works correctly. However, **do not alter the Item class**._
 
 All items have a `SellIn` value which denotes the number of days we have to sell the item. All items have a `Quality` value which denotes how valuable the item is. At the end of each day our system updates both values for every item.
 
@@ -18,8 +18,6 @@ Special items:
 An update is required that includes conjured items:
 
 - “Conjured” items degrade in Quality twice as fast as normal items
-
-Changes to the `UpdateQuality` method and adding any new code is allowed as long as everything still works correctly. However, **do not alter the Item class**.
 
 ### Special item list (alphabetical)
 - Aged Brie
