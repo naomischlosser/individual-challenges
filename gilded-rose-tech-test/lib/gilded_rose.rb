@@ -10,6 +10,7 @@ class GildedRose
       when "aged brie"
         item.sell_in -= 1
         item.quality += 1 if item.quality < 50
+      
       when "backstage passes to a tafkal80etc concert"
         item.sell_in -= 1
         if item.sell_in.between?(6,10)
@@ -21,8 +22,14 @@ class GildedRose
         else
           item.quality = [item.quality += 1, 50].min
         end
+     
+      when "conjured mana cake"
+        item.sell_in -= 1
+        item.quality -= 2
+
       when "sulfuras, hand of ragnaros"
         # never has to be sold or decrease in quality
+      
       else
         item.sell_in -= 1
         if (item.sell_in > 0 && item.quality > 0) || (item.sell_in <= 0 && item.quality = 1)
