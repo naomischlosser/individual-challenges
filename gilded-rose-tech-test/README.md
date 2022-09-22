@@ -11,9 +11,9 @@ General requirements:
 
 Special items:
 
-- “Sulfuras” never has to be sold or decreases in Quality
 - “Aged Brie” actually increases in Quality the older it gets 
 - “Backstage passes” increases in Quality as its SellIn value approaches; Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Quality drops to 0 after the concert
+- “Sulfuras” never has to be sold or decreases in Quality
 
 An update is required that includes conjured items:
 
@@ -21,11 +21,11 @@ An update is required that includes conjured items:
 
 Changes to the `UpdateQuality` method and adding any new code is allowed as long as everything still works correctly. However, **do not alter the Item class**.
 
-### Special item list
-- Sulfuras, Hand of Ragnaros
+### Special item list (alphabetical)
 - Aged Brie
 - Backstage passes to a TAFKAL80ETC concert
 - Conjured items
+- Sulfuras, Hand of Ragnaros
 
 ## DevDependencies
 This program runs in Ruby.
