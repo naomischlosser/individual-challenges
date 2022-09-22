@@ -119,6 +119,13 @@ describe GildedRose do
         expect(items[0].sell_in).to eq 4
         expect(items[0].quality).to eq 50
       end
+
+      it "decreases the sell_in and increases the quality when 0 < sell_in < 5 and quality = 48" do
+        items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 48)]
+        GildedRose.new(items).update_quality()
+        expect(items[0].sell_in).to eq 4
+        expect(items[0].quality).to eq 50
+      end
     end
 
     context "for special item - Sulfuras, Hand of Ragnaros" do
