@@ -9,7 +9,7 @@ class GildedRose
       case item.name
       when "Aged Brie"
         item.sell_in -= 1
-        item.quality += 1
+        item.quality += 1 if item.quality < 50
       when "Backstage passes to a TAFKAL80ETC concert"
         
       when "Sulfuras, Hand of Ragnaros"
