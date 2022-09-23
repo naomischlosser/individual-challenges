@@ -14,7 +14,6 @@ class BankAccount {
 
   addWithdrawal(debit) {
     this.transactions.push(this.transaction.withdrawal(debit));
-    console.log(this.transactions)
   }
 
   printStatement() {
