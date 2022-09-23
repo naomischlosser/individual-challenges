@@ -3,8 +3,6 @@ const BankAccount = require("./bankAccountAccount");
 beforeEach(() => {
   date = "2022-01-01";
   dateFormatted = "01/01/2022";
-
-  jest.useFakeTimers().setSystemTime(new Date(date));
 });
 
 describe("integration", () => {

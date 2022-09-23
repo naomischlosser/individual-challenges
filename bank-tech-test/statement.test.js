@@ -3,8 +3,6 @@ const Statement = require("./statement");
 beforeEach(() => {
   date = "2022-01-01";
   dateFormatted = "01/01/2022";
-
-  jest.useFakeTimers().setSystemTime(new Date());
 });
 
 describe("Statement", () => {
