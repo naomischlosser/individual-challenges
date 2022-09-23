@@ -1,16 +1,8 @@
-class Account {
-  constructor() {
-    this.transactions = [];
-  }
-
-  addTransaction(transaction) {
-    this.transactions.push(transaction);
-  }
-
-  printStatement() {
+class Statement {
+  getStatement(transactions) {
     const header = "date || credit || debit || balance" + "\n";
-    const body = this.transactions.map(this.toFormattedString, this);
-    const accountStatement = header + body.reverse().join("\n");
+    const body = transactions.map(this.toFormattedString, this);
+    const StatementStatement = header + body.reverse().join("\n");
 
     return accountStatement;
   }
@@ -47,4 +39,4 @@ class Account {
   }
 }
 
-module.exports = Account;
+module.exports = Statement;

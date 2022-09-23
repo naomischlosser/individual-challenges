@@ -1,4 +1,4 @@
-const Account = require("./account");
+const Statement = require("./statement");
 
 beforeEach(() => {
   date = "2022-01-01";
@@ -7,28 +7,26 @@ beforeEach(() => {
   jest.useFakeTimers().setSystemTime(new Date(date));
 });
 
-describe("Account", () => {
+describe("Statement", () => {
   it("prints the account statement without any transactions", () => {
-    const account = new Account();
+    const statement = new Statement();
 
-    expect(account.printStatement()).toEqual(
+    expect(statement.printStatement()).toEqual(
       "date || credit || debit || balance" + "\n"
     );
   });
 
   it("prints the account statement after making a deposit", () => {
-    const account = new Account();
+    const statement = new Statement();
 
-    depositDouble = {
+    transactionDouble = [{
       date: new Date(date),
       credit: 50000,
       debit: null,
       balance: 50000,
-    };
+    }];
 
-    account.addTransaction(depositDouble);
-
-    expect(account.printStatement()).toEqual(
+    expect(statement.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} || £500.00 ||  || £500.00`
@@ -36,7 +34,7 @@ describe("Account", () => {
   });
 
   it("prints the account statement after making a deposit and withdrawal", () => {
-    const account = new Account();
+    const statement = new Statement();
 
     depositDouble = {
       date: new Date(date),
@@ -52,10 +50,10 @@ describe("Account", () => {
       balance: 60000,
     };
 
-    account.addTransaction(depositDouble);
-    account.addTransaction(withdrawalDouble);
+    statement.addTransaction(depositDouble);
+    statement.addTransaction(withdrawalDouble);
 
-    expect(account.printStatement()).toEqual(
+    expect(statement.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} ||  || £400.00 || £600.00` +
@@ -64,8 +62,8 @@ describe("Account", () => {
     );
   });
 
-  it("prints the account statement after making a deposit (2x) and withdrawal", () => {
-    const account = new Account();
+  it("prints the account statement after making a deposit (2x) and withdrawal in reverse chronocal order", () => {
+    const statement = new Statement();
 
     depositDouble1 = {
       date: new Date(date),
@@ -88,11 +86,11 @@ describe("Account", () => {
       balance: 250000,
     };
 
-    account.addTransaction(depositDouble1);
-    account.addTransaction(depositDouble2);
-    account.addTransaction(withdrawalDouble);
+    statement.addTransaction(depositDouble1);
+    statement.addTransaction(depositDouble2);
+    statement.addTransaction(withdrawalDouble);
 
-    expect(account.printStatement()).toEqual(
+    expect(statement.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} ||  || £500.00 || £2,500.00` +
@@ -104,7 +102,7 @@ describe("Account", () => {
   });
 
   it("prints the account statement each time (4x) after making a deposit (2x) and withdrawal (2x)", () => {
-    const account = new Account();
+    const statement = new Statement();
 
     // First deposit
     depositDouble1 = {
@@ -114,9 +112,9 @@ describe("Account", () => {
       balance: 100000,
     };
 
-    account.addTransaction(depositDouble1);
+    statement.addTransaction(depositDouble1);
 
-    expect(account.printStatement()).toEqual(
+    expect(statement.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} || £1,000.00 ||  || £1,000.00`
@@ -130,9 +128,9 @@ describe("Account", () => {
       balance: 60000,
     };
 
-    account.addTransaction(withdrawalDouble1);
+    statement.addTransaction(withdrawalDouble1);
 
-    expect(account.printStatement()).toEqual(
+    expect(statement.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} ||  || £400.00 || £600.00` +
@@ -148,9 +146,9 @@ describe("Account", () => {
       balance: 110000,
     };
 
-    account.addTransaction(depositDouble2);
+    statement.addTransaction(depositDouble2);
 
-    expect(account.printStatement()).toEqual(
+    expect(statement.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} || £500.00 ||  || £1,100.00` +
@@ -168,9 +166,9 @@ describe("Account", () => {
       balance: 89950,
     };
 
-    account.addTransaction(withdrawalDouble2);
+    statement.addTransaction(withdrawalDouble2);
 
-    expect(account.printStatement()).toEqual(
+    expect(statement.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} ||  || £200.50 || £899.50` +

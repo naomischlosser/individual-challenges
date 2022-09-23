@@ -1,4 +1,4 @@
-const Bank = require("./bank");
+const BankAccount = require("./bankAccountAccount");
 
 beforeEach(() => {
   date = "2022-01-01";
@@ -8,11 +8,13 @@ beforeEach(() => {
 });
 
 describe("integration", () => {
+  // test if transactions are added to array
+  
   it("prints the account statement after making a deposit", () => {
-    const bank = new Bank();
-    bank.accountDeposit(500.5);
+    const bankAccount = new BankAccount();
+    bankAccount.accountDeposit(500.5);
 
-    expect(bank.accountStatement()).toEqual(
+    expect(bankAccount.accountStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} || £500.50 ||  || £500.50`
@@ -20,11 +22,11 @@ describe("integration", () => {
   });
 
   it("prints the account statement after making a deposit and withdrawal", () => {
-    const bank = new Bank();
-    bank.accountDeposit(1000);
-    bank.accountWithdrawal(400);
+    const bankAccount = new BankAccount();
+    bankAccount.accountDeposit(1000);
+    bankAccount.accountWithdrawal(400);
 
-    expect(bank.accountStatement()).toEqual(
+    expect(bankAccount.accountStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} ||  || £400.00 || £600.00` +
@@ -34,18 +36,18 @@ describe("integration", () => {
   });
 
   it("prints the account statement each time (2x) after making a deposit and withdrawal", () => {
-    const bank = new Bank();
-    bank.accountDeposit(1000);
+    const bankAccount = new BankAccount();
+    bankAccount.accountDeposit(1000);
 
-    expect(bank.accountStatement()).toEqual(
+    expect(bankAccount.accountStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} || £1,000.00 ||  || £1,000.00`
     );
 
-    bank.accountWithdrawal(400);
+    bankAccount.accountWithdrawal(400);
 
-    expect(bank.accountStatement()).toEqual(
+    expect(bankAccount.accountStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} ||  || £400.00 || £600.00` +
