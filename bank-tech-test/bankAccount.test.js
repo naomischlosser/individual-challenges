@@ -11,7 +11,7 @@ describe("integration", () => {
   it("returns an array of transactions after making a deposit and withdrawal", () => {
     const bankAccount = new BankAccount();
     bankAccount.addDeposit(500);
-    bankAccount.addWithdrawal(300);
+    bankAccount.makeWithdrawal(300);
 
     expect(bankAccount.transactions).toEqual([{
       date: new Date(date),
@@ -42,7 +42,7 @@ describe("integration", () => {
   it("prints the account statement after making a deposit and withdrawal", () => {
     const bankAccount = new BankAccount();
     bankAccount.addDeposit(1000);
-    bankAccount.addWithdrawal(400);
+    bankAccount.makeWithdrawal(400);
 
     expect(bankAccount.printStatement()).toEqual(
       "date || credit || debit || balance" +
@@ -66,7 +66,7 @@ describe("integration", () => {
     );
 
     // First withdrawal
-    bankAccount.addWithdrawal(400);
+    bankAccount.makeWithdrawal(400);
 
     expect(bankAccount.printStatement()).toEqual(
       "date || credit || debit || balance" +
@@ -90,7 +90,7 @@ describe("integration", () => {
     );
 
     // Second withdrawal
-    bankAccount.addWithdrawal(200.50);
+    bankAccount.makeWithdrawal(200.50);
 
     expect(bankAccount.printStatement()).toEqual(
       "date || credit || debit || balance" +

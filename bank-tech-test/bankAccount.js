@@ -12,7 +12,7 @@ class BankAccount {
     this.transactions.push(this.transaction.deposit(credit));
   }
 
-  addWithdrawal(debit) {
+  makeWithdrawal(debit) {
     this.transactions.push(this.transaction.withdrawal(debit));
   }
 
