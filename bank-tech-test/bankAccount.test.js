@@ -39,17 +39,17 @@ describe("integration", () => {
     );
   });
 
-  xit("prints the account statement after making a deposit and withdrawal", () => {
+  it("prints the account statement after making a deposit and withdrawal", () => {
     const bankAccount = new BankAccount();
-    bankAccount.accountDeposit(1000);
-    bankAccount.accountWithdrawal(400);
+    bankAccount.addDeposit(1000);
+    bankAccount.addWithdrawal(400);
 
-    expect(bankAccount.accountStatement()).toEqual(
+    expect(bankAccount.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
-        `${dateFormatted} ||  || £400.00 || £600.00` +
+        `${dateFormatted} ||  || 400.00 || 600.00` +
         "\n" +
-        `${dateFormatted} || £1,000.00 ||  || £1,000.00`
+        `${dateFormatted} || 1000.00 ||  || 1000.00`
     );
   });
 
