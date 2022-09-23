@@ -28,11 +28,11 @@ describe("integration", () => {
     }]);
   });
   
-  xit("prints the account statement after making a deposit", () => {
+  it("prints the account statement after making a deposit", () => {
     const bankAccount = new BankAccount();
-    bankAccount.accountDeposit(500.5);
+    bankAccount.addDeposit(500.5);
 
-    expect(bankAccount.accountStatement()).toEqual(
+    expect(bankAccount.printStatement()).toEqual(
       "date || credit || debit || balance" +
         "\n" +
         `${dateFormatted} || 500.50 ||  || 500.50`
