@@ -12,9 +12,9 @@ class Transaction {
 
     let depositData = {
       date: new Date(),
-      credit: credit * 100,
+      credit: credit,
       debit: null,
-      balance: this.balance * 100,
+      balance: this.balance,
     };
 
     return depositData;
@@ -30,8 +30,8 @@ class Transaction {
     let withdrawalData = {
       date: new Date(),
       credit: null,
-      debit: debit * 100,
-      balance: this.balance * 100,
+      debit: debit,
+      balance: this.balance,
     };
 
     return withdrawalData;

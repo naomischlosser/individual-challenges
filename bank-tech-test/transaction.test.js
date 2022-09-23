@@ -12,9 +12,9 @@ describe("Transaction", () => {
 
     expect(transaction.deposit(500.25)).toEqual({
       date: new Date(date),
-      credit: 50025,
+      credit: 500.25,
       debit: null,
-      balance: 50025,
+      balance: 500.25,
     });
   });
 
@@ -24,8 +24,8 @@ describe("Transaction", () => {
     expect(transaction.withdrawal(500)).toEqual({
       date: new Date(date),
       credit: null,
-      debit: 50000,
-      balance: -50000,
+      debit: 500.00,
+      balance: -500.00,
     });
   });
 
@@ -36,8 +36,8 @@ describe("Transaction", () => {
     expect(transaction.withdrawal(500.5)).toEqual({
       date: new Date(date),
       credit: null,
-      debit: 50050,
-      balance: 49950,
+      debit: 500.50,
+      balance: 499.50,
     });
   });
 
