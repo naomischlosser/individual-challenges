@@ -1,8 +1,8 @@
 const Statement = require("./statement");
 
 beforeEach(() => {
-  date = "2022-01-01";
-  dateFormatted = "01/01/2022";
+  date = "2022-02-01";
+  dateFormatted = "01/02/2022";
 });
 
 describe("Statement", () => {
