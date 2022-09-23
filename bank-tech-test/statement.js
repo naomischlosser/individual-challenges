@@ -2,9 +2,9 @@ class Statement {
   getStatement(transactions) {
     const header = "date || credit || debit || balance" + "\n";
     const body = transactions.map(this.toFormattedString, this);
-    const StatementStatement = header + body.reverse().join("\n");
+    const statement = header + body.reverse().join("\n");
 
-    return accountStatement;
+    return statement;
   }
 
   // Skips transactions that are already formatted
@@ -32,10 +32,7 @@ class Statement {
   }
 
   formatCurrency(value) {
-    return (value / 100).toLocaleString("en-UK", {
-      style: "currency",
-      currency: "GBP",
-    });
+    return value.toFixed(2);
   }
 }
 
