@@ -50,8 +50,8 @@ undefined
 undefined
 > console.log(bankAccount.printStatement());
 date || credit || debit || balance
-23/81/2022 ||  || 500.50 || 499.50
-23/81/2022 || 1000.00 ||  || 1000.00
+23/09/2022 ||  || 500.50 || 499.50
+23/09/2022 || 1000.00 ||  || 1000.00
 undefined
 ```
 
