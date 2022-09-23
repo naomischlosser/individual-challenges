@@ -1,24 +1,25 @@
 const Statement = require("./statement");
 const Transaction = require("./transaction");
 
-class Bank {
+class BankAccount {
   constructor() {
     this.transactions = [];
-    this.Statement = new Statement();
+    this.statement = new Statement();
     this.transaction = new Transaction();
   }
 
   addDeposit(credit) {
-    this.transactions.push(this.transaction.withdrawal(credit));
+    this.transactions.push(this.transaction.deposit(credit));
   }
 
   addWithdrawal(debit) {
     this.transactions.push(this.transaction.withdrawal(debit));
+    console.log(this.transactions)
   }
 
   printStatement() {
-    return this.Statement.getStatement();
+    return this.statement.getStatement(this.transactions);
   }
 }
 
-module.exports = Bank;
+module.exports = BankAccount;
