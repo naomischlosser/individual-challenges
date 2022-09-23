@@ -4,7 +4,7 @@ beforeEach(() => {
   date = "2022-01-01";
   dateFormatted = "01/01/2022";
 
-  jest.useFakeTimers().setSystemTime(new Date(date));
+  jest.useFakeTimers().setSystemTime(new Date());
 });
 
 describe("Statement", () => {
@@ -61,42 +61,42 @@ describe("Statement", () => {
     );
   });
 
-  xit("prints the account statement after making a deposit (2x) and withdrawal in reverse chronocal order", () => {
+  it("prints the account statement after making a deposit (2x) and withdrawal in reverse chronological order", () => {
     const statement = new Statement();
 
-    depositDouble1 = {
-      date: new Date(date),
-      credit: 100000,
-      debit: null,
-      balance: 100000,
-    };
+    date1 = "2022-01-01";
+    date2 = "2022-01-02";
+    date3 = "2022-01-03";
 
-    depositDouble2 = {
-      date: new Date(date),
-      credit: 200000,
+    transactionsDouble = [{
+      date: new Date(date1),
+      credit: 1000,
       debit: null,
-      balance: 300000,
-    };
+      balance: 1000,
+    },
 
-    withdrawalDouble = {
-      date: new Date(date),
+    {
+      date: new Date(date2),
+      credit: 2000,
+      debit: null,
+      balance: 3000,
+    },
+
+    {
+      date: new Date(date3),
       credit: null,
-      debit: 50000,
-      balance: 250000,
-    };
+      debit: 500,
+      balance: 2500,
+    }];
 
-    statement.addTransaction(depositDouble1);
-    statement.addTransaction(depositDouble2);
-    statement.addTransaction(withdrawalDouble);
-
-    expect(statement.printStatement()).toEqual(
+    expect(statement.getStatement(transactionsDouble)).toEqual(
       "date || credit || debit || balance" +
         "\n" +
-        `${dateFormatted} ||  || £500.00 || £2,500.00` +
+        `03/01/2022 ||  || 500.00 || 2500.00` +
         "\n" +
-        `${dateFormatted} || £2,000.00 ||  || £3,000.00` +
+        `02/01/2022 || 2000.00 ||  || 3000.00` +
         "\n" +
-        `${dateFormatted} || £1,000.00 ||  || £1,000.00`
+        `01/01/2022 || 1000.00 ||  || 1000.00`
     );
   });
 
