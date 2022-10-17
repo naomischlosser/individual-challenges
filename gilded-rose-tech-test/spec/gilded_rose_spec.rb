@@ -48,19 +48,6 @@ describe GildedRose do
     #   end
     # end
 
-
-
-
-
-    # context "for special item - Sulfuras, Hand of Ragnaros" do
-    #   it "never increases or decreases sell_in or quality" do
-    #     item = Item.new("Sulfuras, Hand of Ragnaros", 10, 50)
-    #     ManaCake.new(item).update_quality()
-    #     expect(item.sell_in).to eq 10
-    #     expect(item.quality).to eq 50
-    #   end
-    # end
-
     # context "when given quality < 0 or quality > 50" do
     #   it "returns an error" do
     #     items = [Item.new("foo", 0, -5)]

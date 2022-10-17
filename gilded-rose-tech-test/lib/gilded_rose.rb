@@ -9,18 +9,18 @@ class GildedRose
     @items.each do |item|
       fail "Quality is outside of the 0-50 range" if !item.quality.between?(0,50)
 
-      case item.name.downcase
-      when "sulfuras, hand of ragnaros"
-        # never has to be sold or decrease in quality
+      # case item.name.downcase
+      # when "sulfuras, hand of ragnaros"
+      #   # never has to be sold or decrease in quality
       
-      else
-        item.sell_in -= 1
-        if (item.sell_in > 0 && item.quality > 0) || (item.sell_in <= 0 && item.quality = 1)
-          item.quality -= 1
-        elsif item.sell_in <= 0 && item.quality >= 2
-          item.quality -= 2
-        end
-      end
+      # else
+      #   item.sell_in -= 1
+      #   if (item.sell_in > 0 && item.quality > 0) || (item.sell_in <= 0 && item.quality = 1)
+      #     item.quality -= 1
+      #   elsif item.sell_in <= 0 && item.quality >= 2
+      #     item.quality -= 2
+      #   end
+      # end
     end
   end
 end
