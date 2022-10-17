@@ -9,19 +9,7 @@ class GildedRose
     @items.each do |item|
       fail "Quality is outside of the 0-50 range" if !item.quality.between?(0,50)
 
-      case item.name.downcase      
-      when "backstage passes to a tafkal80etc concert"
-        item.sell_in -= 1
-        if item.sell_in.between?(6,10)
-          item.quality = [item.quality += 2, 50].min
-        elsif item.sell_in.between?(0,5)
-          item.quality = [item.quality += 3, 50].min
-        elsif item.sell_in < 0
-          item.quality = 0
-        else
-          item.quality = [item.quality += 1, 50].min
-        end
-     
+      case item.name.downcase     
       when "conjured mana cake"
         item.sell_in -= 1
         item.quality = [item.quality -= 2, 0].max
