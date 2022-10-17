@@ -24,11 +24,17 @@ An update is required that includes conjured items:
 
 - “Conjured” items degrade in Quality twice as fast as normal items
 
-### Special item list (alphabetical)
-- Aged Brie
-- Backstage passes to a TAFKAL80ETC concert
-- Conjured Mana Cake
-- Sulfuras, Hand of Ragnaros
+### Code structure
+The GildedRose class is the parent class and the special items inherit from this class. For example, to ensure DRY code, the `check_quality` method can be used in all the childeren that have the same quality range. Only the Sulfuras class overrides this method as the quality should always be 80. In addition, the GildedRose class method `update_quality` covers all the items that are not a special item. Although the current list of childeren override this method, it can be useful if another child is added that e.g. also stores the colour if that item, but wants to make use of the `update_quality` of its parent GildedRose. The Item class is a standalone class; it supports the other classes by storing the name, sell_in and quality of the products.
+
+Parent
+- GildedRose
+
+Children
+- AgedBrie
+- BackstagePasses
+- ManaCake
+- Sulfuras
 
 ## DevDependencies
 This program runs in Ruby.
