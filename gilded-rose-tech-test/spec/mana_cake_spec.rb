@@ -25,10 +25,15 @@ describe ManaCake do
       expect(item.quality).to eq 0
     end
 
-    context "when given quality < 0 or quality > 50" do
-      it "returns an error" do
+    context "checking the quality" do
+      it "returns an error when given quality < 0 or quality > 50" do
         item = Item.new("Conjured Mana Cake", 0, -5)
-        expect{ManaCake.new(item).update_quality()}.to raise_error "Quality is outside of the 0-50 range"
+        expect{ManaCake.new(item).check_quality()}.to raise_error "Quality is outside of the 0-50 range"
+      end
+
+      it "returns a string saying the quality is within the range" do
+        item = Item.new("Conjured Mana Cake", 0, 5)
+        expect(ManaCake.new(item).check_quality()).to eq "Quality is within the range of 0-50"
       end
     end
   end

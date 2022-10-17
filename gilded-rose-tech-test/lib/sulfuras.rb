@@ -7,6 +7,7 @@ class Sulfuras < GildedRose
 
   def check_quality()
     fail "Sulfuras, Hand of Ragnaros quality should be 80" if @item.quality != 80
+    "Sulfuras, Hand of Ragnaros quality is 80"
   end
 
   def update_quality()

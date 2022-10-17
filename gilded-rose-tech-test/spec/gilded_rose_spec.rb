@@ -1,6 +1,5 @@
 require 'item'
 require 'gilded_rose'
-require 'aged_brie'
 
 describe GildedRose do
 
