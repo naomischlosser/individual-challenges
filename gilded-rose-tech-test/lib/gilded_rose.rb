@@ -4,7 +4,7 @@ class GildedRose
   end
 
   def check_quality()
-    fail "Quality is outside of the 0-50 range" if !@item.quality.between?(0,50)
+    fail "Quality is outside the range of 0-50" if !@item.quality.between?(0,50)
     "Quality is within the range of 0-50"
   end
 
