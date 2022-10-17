@@ -9,11 +9,7 @@ class GildedRose
     @items.each do |item|
       fail "Quality is outside of the 0-50 range" if !item.quality.between?(0,50)
 
-      case item.name.downcase     
-      when "conjured mana cake"
-        item.sell_in -= 1
-        item.quality = [item.quality -= 2, 0].max
-
+      case item.name.downcase
       when "sulfuras, hand of ragnaros"
         # never has to be sold or decrease in quality
       
