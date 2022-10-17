@@ -6,6 +6,8 @@ class ManaCake < GildedRose
   end
 
   def update_quality()
+    check_quality()
+    
     @item.sell_in -= 1
     @item.quality = [@item.quality -= 2, 0].max
   end

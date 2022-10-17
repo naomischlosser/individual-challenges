@@ -6,6 +6,8 @@ class BackstagePasses < GildedRose
   end
 
   def update_quality()
+    check_quality()
+    
     @item.sell_in -= 1
 
     if @item.sell_in.between?(6,10)
