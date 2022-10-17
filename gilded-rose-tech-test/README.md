@@ -1,5 +1,5 @@
 # Project description
-This is a well known kata developed by [Terry Hughes](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/). I've treated this project as more of a refactoring excercise than creating a userfriendly interface. The original Ruby code can be found [here](https://github.com/emilybache/GildedRose-Refactoring-Kata/blob/main/ruby/gilded_rose.rb).
+This is a well known kata developed by [Terry Hughes](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/). I've treated this project as a refactoring excercise rather than creating a user friendly interface. The original Ruby code can be found [here](https://github.com/emilybache/GildedRose-Refactoring-Kata/blob/main/ruby/gilded_rose.rb).
 
 ### User story
 _Our inn buys and sells only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us. After a good few years of using the system an update is required. Changes to the original `UpdateQuality` method and adding any new code is allowed as long as everything still works correctly. However, **do not alter the Item class**._
