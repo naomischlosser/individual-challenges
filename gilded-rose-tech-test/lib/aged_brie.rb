@@ -1,12 +1,12 @@
 require 'item'
 
 class AgedBrie < Item
-  def initialize(item)
-    @item = item
+  def initialize(sell_in, quality)
+    super('Aged Brie', sell_in, quality)
   end
 
   def update_quality()
-    @item.sell_in -= 1
-    @item.quality = [@item.quality += 1, 50].min
+    @sell_in -= 1
+    @quality = [@quality += 1, 50].min
   end
 end

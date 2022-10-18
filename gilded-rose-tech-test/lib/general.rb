@@ -1,17 +1,17 @@
 require 'item'
 
 class General < Item
-  def initialize(item)
-    @item = item
+  def initialize(name, sell_in, quality)
+    super(name, sell_in, quality)
   end
 
   def update_quality()
-    @item.sell_in -= 1
+    @sell_in -= 1
 
-    if (@item.sell_in > 0 && @item.quality > 0) || (@item.sell_in <= 0 && @item.quality = 1)
-      @item.quality -= 1
-    elsif @item.sell_in <= 0 && @item.quality >= 2
-      @item.quality -= 2
+    if (@sell_in > 0 && @quality > 0) || (@sell_in <= 0 && @quality = 1)
+      @quality -= 1
+    elsif @sell_in <= 0 && @quality >= 2
+      @quality -= 2
     end
   end
 end

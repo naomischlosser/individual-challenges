@@ -1,21 +1,21 @@
 require 'item'
 
 class BackstagePasses < Item
-  def initialize(item)
-    @item = item
+  def initialize(sell_in, quality)
+    super('Backstage passes to a TAFKAL80ETC concert', sell_in, quality)
   end
 
   def update_quality()
-    @item.sell_in -= 1
+    @sell_in -= 1
 
-    if @item.sell_in.between?(6,10)
-      @item.quality = [@item.quality += 2, 50].min
-    elsif @item.sell_in.between?(0,5)
-      @item.quality = [@item.quality += 3, 50].min
-    elsif @item.sell_in < 0
-      @item.quality = 0
+    if @sell_in.between?(6,10)
+      @quality = [@quality += 2, 50].min
+    elsif @sell_in.between?(0,5)
+      @quality = [@quality += 3, 50].min
+    elsif @sell_in < 0
+      @quality = 0
     else
-      @item.quality = [@item.quality += 1, 50].min
+      @quality = [@quality += 1, 50].min
     end
   end
 end

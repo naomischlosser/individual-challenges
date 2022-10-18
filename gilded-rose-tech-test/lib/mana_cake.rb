@@ -1,12 +1,12 @@
 require 'item'
 
 class ManaCake < Item
-  def initialize(item)
-    @item = item
+  def initialize(sell_in, quality)
+    super('Conjured Mana Cake', sell_in, quality)
   end
 
   def update_quality()
-    @item.sell_in -= 1
-    @item.quality = [@item.quality -= 2, 0].max
+    @sell_in -= 1
+    @quality = [@quality -= 2, 0].max
   end
 end
