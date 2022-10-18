@@ -8,5 +8,4 @@ class Sulfuras < Item
   def update_quality()
     # never has to be sold or decrease in quality
   end
-
 end
