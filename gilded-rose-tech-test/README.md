@@ -2,7 +2,7 @@
 This is a well known kata developed by [Terry Hughes](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/). This is a refactoring excercise. The original Ruby code can be found [here](https://github.com/emilybache/GildedRose-Refactoring-Kata/blob/main/ruby/gilded_rose.rb).
 
 ### User story
-_Our inn buys and sells only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us. After a good few years of using the system an update is required. Changes to the original `UpdateQuality` method and adding any new code is allowed as long as everything still works correctly. However, **do not alter the Item class**._
+_Our inn buys and sells only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us. After a good few years of using the system an update is required. Changes to the original `update_quality` method and adding any new code is allowed as long as everything still works correctly. However, **do not alter the Item class**._
 
 All items have a `SellIn` value which denotes the number of days we have to sell the item. All items have a `Quality` value which denotes how valuable the item is. At the end of each day our system updates both values for every item.
 
@@ -25,14 +25,15 @@ An update is required that includes conjured items:
 - “Conjured” items degrade in Quality twice as fast as normal items
 
 ### Code structure
-The GildedRose class is the parent class and the special items inherit from this class. For example, to ensure DRY code, the `check_quality` method can be used in all the childeren that have the same quality range. Only the Sulfuras class overrides this method as the quality should always be 80. In addition, the GildedRose class method `update_quality` covers all the items that are not a special item. Although the current list of childeren override this method, it can be useful if another child is added that e.g. also stores the colour if that item, but wants to make use of the `update_quality` of its parent GildedRose. The Item class is a standalone class; it supports the other classes by storing the name, sell_in and quality of the products.
+The `Item` class is the parent class and all the other items inherit from this class to store the name, sell_in and quality. Each child has its own `update_quality` method that corresponds to that particular item. The `GildedRose` class takes an array of items, loops through each item and updates the sell_in and quality when the `update_quality` method is called.
 
 Parent
-- GildedRose
+- Item
 
 Children
 - AgedBrie
 - BackstagePasses
+- General
 - ManaCake
 - Sulfuras
 
