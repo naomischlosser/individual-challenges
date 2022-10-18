@@ -1,6 +1,6 @@
-require 'gilded_rose'
+require 'item'
 
-class AgedBrie < GildedRose
+class AgedBrie < Item
   def initialize(item)
     @item = item
   end

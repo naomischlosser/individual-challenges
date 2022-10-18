@@ -61,12 +61,12 @@ describe BackstagePasses do
     end
 
     context "checking the quality" do
-      it "returns an error when given quality < 0 or quality > 50" do
+      xit "returns an error when given quality < 0 or quality > 50" do
         item = Item.new("Backstage passes to a TAFKAL80ETC concert", 0, -5)
         expect{BackstagePasses.new(item).check_quality()}.to raise_error "Quality is outside the range of 0-50"
       end
 
-      it "returns a string saying the quality is within the range" do
+      xit "returns a string saying the quality is within the range" do
         item = Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 5)
         expect(BackstagePasses.new(item).check_quality()).to eq "Quality is within the range of 0-50"
       end

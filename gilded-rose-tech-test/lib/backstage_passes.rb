@@ -1,6 +1,6 @@
-require 'gilded_rose'
+require 'item'
 
-class BackstagePasses < GildedRose
+class BackstagePasses < Item
   def initialize(item)
     @item = item
   end

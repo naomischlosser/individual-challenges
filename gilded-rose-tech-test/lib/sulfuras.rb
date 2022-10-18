@@ -1,14 +1,14 @@
-require 'gilded_rose'
+require 'item'
 
-class Sulfuras < GildedRose
+class Sulfuras < Item
   def initialize(item)
     @item = item
   end
 
-  def check_quality()
-    fail "Sulfuras, Hand of Ragnaros quality should be 80" if @item.quality != 80
-    "Sulfuras, Hand of Ragnaros quality is 80"
-  end
+  # def check_quality()
+  #   fail "Sulfuras, Hand of Ragnaros quality should be 80" if @item.quality != 80
+  #   "Sulfuras, Hand of Ragnaros quality is 80"
+  # end
 
   def update_quality()
     # never has to be sold or decrease in quality

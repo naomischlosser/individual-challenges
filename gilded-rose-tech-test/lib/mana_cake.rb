@@ -1,6 +1,6 @@
-require 'gilded_rose'
+require 'item'
 
-class ManaCake < GildedRose
+class ManaCake < Item
   def initialize(item)
     @item = item
   end
